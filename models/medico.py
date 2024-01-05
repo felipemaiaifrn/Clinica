@@ -26,7 +26,7 @@ class Medico:
     return f"{self.__id} - {self.__nome} - {self.__crm} - {self.__senha}"
 
 
-class NServico:
+class NMedico:
   __medicos = []
 
   @classmethod

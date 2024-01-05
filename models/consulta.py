@@ -25,12 +25,7 @@ class Consulta:
   def set_id_medico(self, id_medico): self.__id_medico = id_medico
 
   def __eq__(self, x):
-    if self.__id == x.__id 
-    and self.__data == x.__data 
-    and self.__confirmado == x.__confirmado 
-    and self.__descricao == x.__descricao 
-    and self.__id_paciente == x.__id_paciente 
-    and self.__id_medico == x.__id_medico:
+    if self.__id == x.__id and self.__data == x.__data and self.__confirmado == x.__confirmado and self.__descricao == x.__descricao and self.__id_paciente == x.__id_paciente and self.__id_medico == x.__id_medico :
       return True
     return False
 

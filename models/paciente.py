@@ -37,8 +37,8 @@ class NPaciente:
         for paciente in cls.__pacientes:
             if paciente.get_id() > id: id = paciente.get_id()
         x.set_id(id+1)
-        for c in cls.__Pacientes:
-            if c.get_email() == x.get_email():
+        for c in cls.__pacientes:
+            if c.get_cpf() == x.get_cpf():
                 return False
         cls.__pacientes.append(x)
         NPaciente.salvar()
@@ -76,13 +76,20 @@ class NPaciente:
             NPaciente.salvar()
 
     @classmethod
+    def ver_cpf(cls, cpf):
+        for paciente in cls.__pacientes:
+            if cpf == paciente.get_cpf():
+                return False
+        return True
+
+    @classmethod
     def abrir(cls):
         cls.__pacientes = []
         try:
             with open("pacientes.json", mode="r") as arquivo:
                 pacientes_json = json.load(arquivo)
                 for obj in pacientes_json:
-                    p = Paciente(obj["_Paciente__id"], obj["_Paciente__nome"], obj["_Paciente__email"], obj["_Paciente__fone"], obj["_Paciente__senha"])
+                    p = Paciente(obj["_Paciente__id"], obj["_Paciente__nome"], obj["_Paciente__cpf"], obj["_Paciente__fone"], obj["_Paciente__senha"])
                     cls.__pacientes.append(p)
         except FileNotFoundError:
             pass

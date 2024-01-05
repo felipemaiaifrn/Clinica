@@ -33,12 +33,12 @@ class View:
                 return paciente
         return None
 
+
+
     def paciente_admin():
         for paciente in View.paciente_listar():
-            if paciente.get_nome() == "admin": return
+            if paciente.get_cpf() == "admin": return
         View.paciente_inserir("admin", "admin", "0000", "admin")
-
-
 
     def medico_listar():
         return NMedico.listar()
@@ -119,10 +119,13 @@ class View:
             raise TypeError('O intervalo deve ser positivo!')
     
         while aux <= data_fim :
-            NConsulta.inserir(Consulta(0, aux, False, 0, 0))
+            NConsulta.inserir(Consulta(0, aux, "", False, 0, 0))
             aux = aux + delta
 
 
 
-    def editar_perfil(id, nome, cpf, fone, senha):
+    def editar_perfil_paciente(id, nome, cpf, fone, senha):
         NPaciente.atualizar(Paciente(id, nome, cpf, fone, senha))
+
+    def editar_perfil_medico(id, nome, crm, senha):
+        NMedico.atualizar(Medico(id, nome, crm, senha))
